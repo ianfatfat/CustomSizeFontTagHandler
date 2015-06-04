@@ -81,6 +81,8 @@ public class FontUtil {
 			    }
 			private void endMyFont(String tag, Editable text,
 					XMLReader xmlReader) {
+				//myfont标签不能裸着，即必须有html等标签包裹，或者前面有其他内容，否则字体大小不能起作用
+				//即getlast变成从后面取，最后的内容的范围是0到文本全长度
 				int  len = text.length();
 		        Object obj = getLast(text, MyFont.class);
 		        int where = text.getSpanStart(obj);
